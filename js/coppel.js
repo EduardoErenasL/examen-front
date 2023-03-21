@@ -325,6 +325,18 @@ document.addEventListener("DOMContentLoaded", function(event) {
     modalAgregarPoliza.classList.add('show')
   })
 
+  document.querySelector('#modalAgregarPoliza .group-control.empleado select').addEventListener('change', (event) => {
+    document.querySelector('#modalAgregarPoliza .group-control.empleado').classList.add('error')
+  })
+
+  document.querySelector('#modalAgregarPoliza .group-control.articulo select').addEventListener('change', (event) => {
+    document.querySelector('#modalAgregarPoliza .group-control.articulo').classList.add('error')
+  })
+
+  document.querySelector('#modalAgregarPoliza .group-control.cantidad input').addEventListener('change', (event) => {
+    document.querySelector('#modalAgregarPoliza .group-control.cantidad').classList.add('error')
+  })
+
   const buttonCancelarAgregarPoliza = document.getElementById('cancelarAgregarPoliza')
 
   buttonCancelarAgregarPoliza.addEventListener('click', (event) => {
