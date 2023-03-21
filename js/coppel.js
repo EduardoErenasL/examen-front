@@ -154,11 +154,30 @@ function validarConfirmarPoliza () {
   const cantidad = document.getElementById('cantidadAgregarPoliza').value
 
   if (empleado == null || empleado == -1) {
-
+    document.querySelector('#modalAgregarPoliza .group-control.empleado').classList.add('error')
+    valido = false
+  } else {
+    document.querySelector('#modalAgregarPoliza .group-control.empleado').classList.remove('error')
   }
 
-  modalAgregarPoliza.classList.remove('show')
-  modalAgregarPolizaConfirmacion.classList.add('show')
+  if (articulo == null || articulo == -1) {
+    document.querySelector('#modalAgregarPoliza .group-control.articulo').classList.add('error')
+    valido = false
+  } else {
+    document.querySelector('#modalAgregarPoliza .group-control.articulo').classList.remove('error')
+  }
+
+  if (cantidad == null || cantidad <= 0) {
+    document.querySelector('#modalAgregarPoliza .group-control.cantidad').classList.add('error')
+    valido = false
+  } else {
+    document.querySelector('#modalAgregarPoliza .group-control.cantidad').classList.remove('error')
+  }
+
+  if (valido) {
+    modalAgregarPoliza.classList.remove('show')
+    modalAgregarPolizaConfirmacion.classList.add('show')
+  }
 }
 
 async function guardarPoliza () {
