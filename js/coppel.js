@@ -155,6 +155,7 @@ function validarConfirmarPoliza () {
 
   if (empleado == null || empleado == -1) {
     document.querySelector('#modalAgregarPoliza .group-control.empleado').classList.add('error')
+    document.querySelector('#modalAgregarPoliza .group-control.empleado .msg').innerHTML = 'Seleccione un empleado'
     valido = false
   } else {
     document.querySelector('#modalAgregarPoliza .group-control.empleado').classList.remove('error')
@@ -162,6 +163,7 @@ function validarConfirmarPoliza () {
 
   if (articulo == null || articulo == -1) {
     document.querySelector('#modalAgregarPoliza .group-control.articulo').classList.add('error')
+    document.querySelector('#modalAgregarPoliza .group-control.articulo .msg').innerHTML = 'Seleccione un articulo'
     valido = false
   } else {
     document.querySelector('#modalAgregarPoliza .group-control.articulo').classList.remove('error')
@@ -169,6 +171,7 @@ function validarConfirmarPoliza () {
 
   if (cantidad == null || cantidad <= 0) {
     document.querySelector('#modalAgregarPoliza .group-control.cantidad').classList.add('error')
+    document.querySelector('#modalAgregarPoliza .group-control.cantidad .msg').innerHTML = 'Ingrese la cantidad'
     valido = false
   } else {
     document.querySelector('#modalAgregarPoliza .group-control.cantidad').classList.remove('error')
@@ -326,15 +329,15 @@ document.addEventListener("DOMContentLoaded", function(event) {
   })
 
   document.querySelector('#modalAgregarPoliza .group-control.empleado select').addEventListener('change', (event) => {
-    document.querySelector('#modalAgregarPoliza .group-control.empleado').classList.add('error')
+    document.querySelector('#modalAgregarPoliza .group-control.empleado').classList.remove('error')
   })
 
   document.querySelector('#modalAgregarPoliza .group-control.articulo select').addEventListener('change', (event) => {
-    document.querySelector('#modalAgregarPoliza .group-control.articulo').classList.add('error')
+    document.querySelector('#modalAgregarPoliza .group-control.articulo').classList.remove('error')
   })
 
   document.querySelector('#modalAgregarPoliza .group-control.cantidad input').addEventListener('change', (event) => {
-    document.querySelector('#modalAgregarPoliza .group-control.cantidad').classList.add('error')
+    document.querySelector('#modalAgregarPoliza .group-control.cantidad').classList.remove('error')
   })
 
   const buttonCancelarAgregarPoliza = document.getElementById('cancelarAgregarPoliza')
