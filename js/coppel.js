@@ -7,7 +7,14 @@ globalData.idPolizaEliminarActual = 0
 
 async function obtenerEmpleados() {
   try {
-    const response = await axios.get(`${URL_BASE}/empleado`)
+    const response = await axios.get(`${URL_BASE}/empleado`, {
+      headers: {
+        "Authorization": AUTH_BASE,
+        'Content-Type': "application/json",
+        'Access-Control-Allow-Origin' : '*',
+        'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+      }
+    })
 
     if (response.data?.meta?.status == 'OK') {
       globalData.empleados = response.data.data
@@ -140,6 +147,15 @@ function pintarPolizas () {
 function validarConfirmarPoliza () {
   const modalAgregarPoliza = document.getElementById('modalAgregarPoliza')
   const modalAgregarPolizaConfirmacion = document.getElementById('modalAgregarPolizaConfirmacion')
+  let valido = true
+
+  const empleado = document.getElementById('empleadoAgregarPoliza').value
+  const articulo = document.getElementById('articuloAgregarPoliza').value
+  const cantidad = document.getElementById('cantidadAgregarPoliza').value
+
+  if (empleado == null || empleado == -1) {
+
+  }
 
   modalAgregarPoliza.classList.remove('show')
   modalAgregarPolizaConfirmacion.classList.add('show')
@@ -281,6 +297,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   buttonAgregarPoliza.addEventListener('click', (event) => {
     const modalAgregarPoliza = document.getElementById('modalAgregarPoliza')
+
+    document.querySelector('#modalAgregarPolizaConfirmacion .alerta').classList.remove('show')
+    document.getElementById('empleadoAgregarPoliza').value = -1
+    document.getElementById('articuloAgregarPoliza').value = -1
+    document.getElementById('cantidadAgregarPoliza').value = ''
 
     modalAgregarPoliza.classList.add('show')
   })
